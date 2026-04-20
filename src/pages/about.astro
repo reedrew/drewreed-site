@@ -1,0 +1,173 @@
+---
+import Base from '../layouts/Base.astro';
+
+const designTools = ['Figma', 'Illustrator', 'InDesign', 'Photoshop', 'Affinity', 'Typography', 'Print design', 'Brand identity'];
+const webTools = ['HTML', 'CSS', 'JavaScript', 'WordPress', 'Wix', 'React', 'Astro', 'Tailwind'];
+---
+
+<Base title="About" activePage="about">
+
+  <div class="page-content">
+    <div class="page-header">
+      <h2 class="page-title">About</h2>
+      <div class="page-rule"></div>
+    </div>
+
+    <div class="about-grid">
+
+      <div class="about-left">
+        <div class="photo-wrap">
+          <img src="/images/site-portrait.webp" alt="Drew Reed" class="photo" />
+        </div>
+        <a href="/drew-reed-resume.pdf" class="resume-link" target="_blank" rel="noopener noreferrer">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+            <rect x="1" y="1" width="10" height="10" rx="1" stroke="currentColor" stroke-width="1.2"/>
+            <path d="M3 5h6M3 7h4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+          </svg>
+          Download résumé
+        </a>
+        <div class="resume-note">PDF · Updated 2026</div>
+      </div>
+
+      <div class="about-right">
+        <div class="bio-section">
+          <div class="section-label">Bio</div>
+          <div class="bio-text">
+            <p>Hey! I'm Drew, and I'm a graphic and web designer based in Indianapolis, with a degree in Informatics with a focus in Graphic Design from IU Bloomington. My background spans traditional print and graphic work through to web, and I currently take on freelance projects alongside my full-time work. During my time at IU, I served as an officer of the AIGA student chapter, designing promotional materials and helping build a community around design on campus.</p>
+            <p>When I'm not at my desk, I'm usually hanging with my cat, catching a movie (Certified A-Lister), gaming with my friends, or deep in a fantasy novel!</p>
+          </div>
+        </div>
+
+        <div class="skills-section">
+          <div class="section-label">Skills &amp; tools</div>
+          <div class="skills-group">
+            <div class="skills-group-label">Design</div>
+            <div class="skills-list">
+              {designTools.map((tool) => (
+                <span class="skill-tag">{tool}</span>
+              ))}
+            </div>
+          </div>
+          <div class="skills-group">
+            <div class="skills-group-label">Web</div>
+            <div class="skills-list">
+              {webTools.map((tool) => (
+                <span class="skill-tag">{tool}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</Base>
+
+<style>
+  .page-content { padding: 4rem 0; }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .photo-wrap {
+    border: 0.1rem solid rgba(44, 32, 21, 0.12);
+    aspect-ratio: 3/4;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+    background: rgba(44, 32, 21, 0.04);
+  }
+
+  .photo { width: 100%; height: 100%; object-fit: cover; }
+
+  .resume-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    font-family: var(--font-mono);
+    font-size: 1.1rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--paper);
+    text-decoration: none;
+    background: var(--ink);
+    border: 0.15rem solid var(--ink);
+    padding: 0.6rem 1rem;
+    width: 100%;
+    transition: all 0.15s;
+    margin-bottom: 0.5rem;
+  }
+
+  .resume-link:hover { background: var(--accent); border-color: var(--accent); }
+
+  .resume-note {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(44, 32, 21, 0.35);
+    text-align: center;
+  }
+
+  .bio-section { margin-bottom: 3rem; }
+
+  .bio-text { font-size: 1.5rem; line-height: 1.9; color: var(--ink-light); }
+  .bio-text p + p { margin-top: 1.25rem; }
+
+  .skills-section { margin-bottom: 3rem; }
+  .skills-group { margin-bottom: 1.75rem; }
+
+  .skills-group-label {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ochre);
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 0.1rem solid var(--rule);
+  }
+
+  .skills-list { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+
+  .skill-tag {
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+    color: var(--ink);
+    border: 0.1rem solid rgba(44, 32, 21, 0.25);
+    padding: 0.4rem 1rem;
+    background: rgba(44, 32, 21, 0.03);
+    transition: all 0.15s;
+    cursor: default;
+  }
+
+  .skill-tag:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .about-grid {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    .photo-wrap {
+      aspect-ratio: 1/1;
+      max-width: 28rem;
+    }
+
+    .resume-link { max-width: 28rem; }
+    .resume-note { max-width: 28rem; }
+  }
+
+  @media (max-width: 480px) {
+    .bio-text { font-size: 1.4rem; }
+    .photo-wrap { max-width: 100%; }
+    .resume-link { max-width: 100%; }
+  }
+</style>

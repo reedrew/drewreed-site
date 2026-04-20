@@ -1,0 +1,250 @@
+---
+import Base from '../layouts/Base.astro';
+
+const featuredProject = {
+  title: 'The Knowledge Vault — Intranet Redesign',
+  type: 'Web Design',
+  image: '/images/projects/Knowledge_Vault/kv-featured-thumb.webp',
+  alt: 'The Knowledge Vault — Intranet Redesign',
+  href: '/work',
+};
+
+const previewProjects = [
+  { title: 'Crazy Charlie\'s Salsa', type: 'Graphic Design', image: '/images/projects/CCS/ccsalsa-thumb.webp', alt: 'Crazy Charlie\'s Salsa redesign' },
+  { title: 'Hot & Knotty', type: 'Print', image: '/images/projects/HnK/hot-n-knotty-thumb.webp', alt: 'Hot & Knotty print' },
+  { title: 'Cosmic Curiosities', type: 'Graphic Design', image: '/images/projects/Cosmic_Curiosities/cosmic-cur-thumb.webp', alt: 'Cosmic Curiosities' },
+];
+---
+
+<Base title="Home" activePage="home">
+
+  <section class="hero">
+    <div class="hero-left">
+      <div class="hero-issue">Est. 2025</div>
+      <h2 class="hero-headline">Hi, I'm <em>Drew</em>.<br>I like making cool things to look at.</h2>
+      <p class="hero-body">Indianapolis-based graphic and web designer, taking on freelance work and making fun stuff.</p>
+      <a href="/work" class="hero-cta">View all work</a>
+    </div>
+    <div class="hero-right">
+      <div class="featured-label">Featured project</div>
+      <a href={featuredProject.href} class="featured-work">
+        <img src={featuredProject.image} alt={featuredProject.alt} />
+      </a>
+      <div class="work-meta">
+        <span class="work-title">{featuredProject.title}</span>
+        <span class="work-type">{featuredProject.type}</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-header">
+      <span class="page-title">Selected works</span>
+      <div class="page-rule"></div>
+      <span class="page-sub">01 — 03</span>
+    </div>
+    <div class="preview-grid">
+      {previewProjects.map((project) => (
+        <a href="/work" class="preview-item">
+          <div class="preview-thumb">
+            <img src={project.image} alt={project.alt} />
+          </div>
+          <div class="preview-item-title">{project.title}</div>
+          <div class="preview-item-cat">{project.type}</div>
+        </a>
+      ))}
+    </div>
+    <div class="view-all-wrap">
+      <a href="/work" class="view-all-link">View all work →</a>
+    </div>
+  </section>
+
+</Base>
+
+<style>
+  .hero {
+    padding: 4rem 0 3rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+    border-bottom: 0.1rem solid var(--rule);
+  }
+
+  .hero-issue {
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .hero-issue::before,
+  .hero-issue::after {
+    content: '';
+    display: inline-block;
+    height: 0.15rem;
+    width: 2.4rem;
+    background: var(--accent);
+  }
+
+  .hero-headline {
+    font-family: var(--font-display);
+    font-size: 5.2rem;
+    font-weight: 700;
+    line-height: 1.05;
+    color: var(--ink);
+    text-shadow:
+      0.1rem 0.1rem 0 rgba(44, 32, 21, 0.12),
+      0.2rem 0.2rem 0 rgba(44, 32, 21, 0.06);
+    margin-bottom: 1.25rem;
+  }
+
+  .hero-headline em { font-style: italic; color: var(--accent); }
+
+  .hero-body {
+    font-size: 1.5rem;
+    line-height: 1.8;
+    color: var(--ink-light);
+    margin-bottom: 1.5rem;
+    font-style: italic;
+  }
+
+  .hero-cta {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 1.1rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--paper);
+    text-decoration: none;
+    background: var(--accent);
+    border: 0.15rem solid var(--accent);
+    padding: 0.6rem 1.25rem;
+    transition: all 0.15s;
+  }
+
+  .hero-cta:hover { background: var(--ink); border-color: var(--ink); }
+
+  .hero-right { padding-top: 0.5rem; }
+
+  .featured-label {
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ochre);
+    margin-bottom: 0.75rem;
+    border-bottom: 0.1rem solid var(--rule);
+    padding-bottom: 0.5rem;
+  }
+
+  .featured-work {
+    display: block;
+    border: 0.1rem solid rgba(44, 32, 21, 0.1);
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    margin-bottom: 0.75rem;
+    transition: border-color 0.15s;
+    background: rgba(44, 32, 21, 0.04);
+  }
+
+  .featured-work:hover { border-color: var(--accent); }
+
+  .featured-work img { width: 100%; height: 100%; object-fit: cover; }
+
+  .work-meta { display: flex; justify-content: space-between; align-items: baseline; }
+
+  .work-title { font-family: var(--font-display); font-size: 1.6rem; font-weight: 700; color: var(--ink); }
+
+  .work-type { font-family: var(--font-mono); font-size: 1rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); }
+
+  .section { padding: 3rem 0; border-bottom: 0.1rem solid var(--rule); }
+
+  .section-header { display: flex; align-items: baseline; gap: 1rem; margin-bottom: 2rem; }
+
+  .preview-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .preview-item { text-decoration: none; }
+
+  .preview-thumb {
+    border: 0.1rem solid rgba(44, 32, 21, 0.1);
+    aspect-ratio: 3/2;
+    overflow: hidden;
+    margin-bottom: 0.6rem;
+    transition: border-color 0.15s;
+    background: rgba(44, 32, 21, 0.04);
+  }
+
+  .preview-item:hover .preview-thumb { border-color: var(--accent); }
+  .preview-item:hover .preview-item-title { color: var(--accent); }
+
+  .preview-thumb img { width: 100%; height: 100%; object-fit: cover; }
+
+  .preview-item-title {
+    font-family: var(--font-serif);
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 0.2rem;
+    transition: color 0.15s;
+  }
+
+  .preview-item-cat {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ochre);
+  }
+
+  .view-all-wrap { text-align: right; }
+
+  .view-all-link {
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-decoration: none;
+    transition: opacity 0.15s;
+  }
+
+  .view-all-link:hover { opacity: 0.7; }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .hero-headline { font-size: 4.2rem; }
+    .preview-grid { grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      padding: 3rem 0 2rem;
+    }
+
+    .hero-right { padding-top: 0; }
+
+    .hero-headline { font-size: 3.8rem; }
+
+    .preview-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 480px) {
+    .hero-headline { font-size: 3.2rem; }
+    .hero-body { font-size: 1.4rem; }
+    .preview-grid { grid-template-columns: 1fr; }
+    .featured-label { font-size: 0.9rem; }
+  }
+</style>

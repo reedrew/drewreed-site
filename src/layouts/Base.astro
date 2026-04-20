@@ -1,0 +1,50 @@
+---
+import '../styles/global.css';
+const { title = 'Drew Reed', activePage } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Drew Reed — Graphic & Web Designer based in Indianapolis." />
+    <title>{title} | Drew Reed</title>
+  </head>
+  <body>
+    <div class="site-wrapper">
+
+      <header class="nav-header">
+        <div class="nav-rule-top"></div>
+        <div class="nav-eyebrow">Graphic &amp; Web Design — Indianapolis, IN</div>
+        <a href="/" class="nav-name-link">
+          <h1 class="nav-name">Drew Reed</h1>
+        </a>
+        <nav class="nav-links">
+          <a href="/work" class={`nav-link${activePage === 'work' ? ' active' : ''}`}>Work</a>
+          <a href="/about" class={`nav-link${activePage === 'about' ? ' active' : ''}`}>About</a>
+          <a href="/blog" class={`nav-link${activePage === 'blog' ? ' active' : ''}`}>Blog</a>
+          <a href="/contact" class={`nav-link${activePage === 'contact' ? ' active' : ''}`}>Contact</a>
+        </nav>
+      </header>
+
+      <main>
+        <slot />
+      </main>
+
+      <footer class="footer-note">
+        <div class="footer-rule">
+          <span class="footer-ornament">&#9672;</span>
+        </div>
+        <div class="footer-text">Copyright &copy; 2026 Drew Reed &nbsp;&middot;&nbsp; All rights reserved.&nbsp;</div>
+      </footer>
+
+    </div>
+  </body>
+</html>
+
+<style>
+  .nav-name-link {
+    text-decoration: none;
+    display: block;
+  }
+</style>

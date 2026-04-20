@@ -1,0 +1,1239 @@
+---
+import Base from "../layouts/Base.astro";
+
+type CaseStudySlide = {
+  image: string;
+  alt: string;
+  label: string;
+  heading: string;
+  body: string;
+};
+
+type GallerySlide = {
+  image: string;
+  alt: string;
+  caption: string;
+};
+
+type ScrollSlide = {
+  image: string;
+  alt: string;
+  caption: string;
+};
+
+type Project = {
+  id: string;
+  title: string;
+  type: string;
+  kind: "case-study" | "gallery" | "scroll-gallery";
+  thumb: string;
+  tools?: string[];
+  slides: CaseStudySlide[] | GallerySlide[] | ScrollSlide[];
+};
+
+////////////////////////////////////////////////////////////
+//  Project Guide //////////////////////////
+//////////////////////////////
+// Every project needs
+//  - thumbnail image (3:2)
+//  - title
+//  - category/type (web, graphic, print)
+//////////////////////////////
+// Gallery projects
+//   - 2-5 images (16:9)
+//   - caption
+//////////////////////////////
+//  Case study projects
+//   - 3-5 images (4:3/16:9)
+//   - label, heading, paragraph of copy for each slide
+////////////////////////////////////////////////////////////
+
+const projects: Project[] = [
+  {
+    id: "p1",
+    title: "Crazy Charlie's Salsa",
+    type: "graphic",
+    kind: "case-study",
+    thumb: "/images/projects/CCS/ccsalsa-thumb.webp",
+    tools: ["Illustrator", "Photoshop"],
+    slides: [
+      {
+        image: "/images/projects/CCS/ccsalsa-1.webp",
+        alt: "Project overview",
+        label: "Overview",
+        heading: "Brief",
+        body: "This was a class project where I was tasked with finding a real world item in a grocery store with a design that I could critique and subsequently improve. I settled on Crazy Charlie's Salsa because I love their salsa and it definitely wasn't also an excuse to buy more! Seriously though, I felt like I saw their vision and that I could do their package design justice.",
+      },
+      {
+        image: "/images/projects/CCS/ccsalsa-2.webp",
+        alt: "Project research",
+        label: "Research",
+        heading: "Design Critiques",
+        body: "I began with a visual audit of the original packaging to identify pain points before touching anything. My key finding were the label lacking breathing room, its visual hierarchy made it hard to distinguish the brand from the product name, and 'Salsa' read poorly against the background. At the same time, I loved the eccentric, hand-crafted energy and wanted to make sure I leaned into that. These insights shaped my design constraints — perserve the kook, modernize the look!",
+      },
+      {
+        image: "/images/projects/CCS/ccsalsa-3.webp",
+        alt: "Project process",
+        label: "Process",
+        heading: "Iteration!",
+        body: "The exploration phase centered on two questions: which typefaces could carry the brand's personality, and which color system would give it shelf presence? I tested hierarchy arrangements — the relationship between 'Crazy,' 'Charlie's,' and 'Salsa' needed to feel dynamic like the original but still readable. Color came next, with palettes pulled from the original label\'s warmth and pushed into new combinations. I wanted to find something that felt fresh without losing the label's familiarity.",
+      },
+      {
+        image: "/images/projects/CCS/ccsalsa-4.webp",
+        alt: "Project one outcome",
+        label: "Outcome",
+        heading: "The result",
+        body: "The final design retains everything that made Crazy Charlie's so crazy while fixing the things that were getting in its way. A consolidated type system, clearer hierarchy, and a clearer color-coded heat range give the line a cohesive identity across variants. The final labels are more legible, more structured, and more shelf-ready than the original, while still feeling like they belong to the same brand. That balance is what I'm most proud of here.",
+      },
+    ],
+  },
+  {
+    id: "p2",
+    title: "Hot & Knotty",
+    type: "print",
+    kind: "gallery",
+    thumb: "/images/projects/HnK/hot-n-knotty-thumb.webp",
+    slides: [
+      {
+        image: "/images/projects/HnK/hot-n-knotty-1.webp",
+        alt: "Project two image one",
+        caption: "Hot & Knotty print hanging in the print shop",
+      },
+      {
+        image: "/images/projects/HnK/hot-n-knotty-2.webp",
+        alt: "Project two image two",
+        caption: "A few prints framed in my house and my brother's house",
+      },
+    ],
+  },
+  {
+    id: "p9",
+    title: "The Knowledge Vault — Intranet Redesign",
+    type: "web",
+    kind: "scroll-gallery",
+    thumb: "/images/projects/Knowledge_Vault/kv-thumb.webp",
+    slides: [
+      {
+        image: "/images/projects/Knowledge_Vault/kv-1.webp",
+        alt: "Knowledge Vault new home page",
+        caption: "New home page—featuring an overhauled navigation bar, a custom built announcements carousel, a custom-built dropdown widget to display company surveys and polls, and a custom-built widget with easy tab functionality to allow for multiple widgets to occupy the same space. This widget was actually featured on Axero's Builder Showcase (see next slide).",
+      },
+      {
+        image: "/images/projects/Knowledge_Vault/kv-2.webp",
+        alt: "Axero's builder showcase displaying Drew's custom widget.",
+        caption: "Axero's Builder Showcase showing my custom-built widget. The purpose of the builder showcase is to show their clients what their platform is capable of in terms of customization.",
+      },
+      {
+        image: "/images/projects/Knowledge_Vault/kv-6.webp",
+        alt: "Axero's builder showcase displaying Drew's custom widget.",
+        caption: "A temporary page for employees to find benefits information during their open enrollment period. Human Resources was inundated with questions every year about benefits. This was a solution to that problem by providing an easy to access place to answer all of the most common questions they would receive. At the top was also a custom-built timeline that updated daily to reflect important information and events throughout the enrollment period. Not only did HR receive fewer questions, but they now had a resource to refer to when answering them. It was a huge success, and made the open enrollment period much less stressful for a lot of employees.",
+      },
+      {
+        image: "/images/projects/Knowledge_Vault/kv-3.webp",
+        alt: "Knowledge Vault new home page",
+        caption: "This was a space on the intranet I developed with the Human Resources department. My job was to identify their needs for onboarding in the intranet, then build a space that meets them. I had a lot of freedom in terms of design, and I wanted to make something interactive and engaging. The timeline is custom-built and hooks into the employee's start-date automatically, filling in the timeline as they progress through their onboarding. Employees are able to hover over each milestone and see what they will be accomplishing by then.",
+      },
+      {
+        image: "/images/projects/Knowledge_Vault/kv-4.webp",
+        alt: "Axero's builder showcase displaying Drew's custom widget.",
+        caption: "This is a template I developed at the end of my internship for a complete redesign of every department's individual spaces featuring custom widgets I built. While each department had unique needs, their pages were built out when the intranet was in its infancy, and they had a lot more potential. The goal was to create a template that every department could use and edit to their needs. This way, every department page would be structured similarly to one another, making it easier to navigate the intranet as a whole. It also included dynamically hidden tools in the bottom to help space moderators manage content.",
+      },
+      {
+        image: "/images/projects/Knowledge_Vault/kv-5.webp",
+        alt: "Knowledge Vault new home page",
+        caption: "Another page built out for Human Resources, this was a page to highlight their new benefits offering: LinkedIn Learning. It was also meant to serve as a place to find other learning resources on and off the intranet. Additionally, I developed a custom survey form at the bottom of the page for employees to share specific feedback about the learning hub directly with HR.",
+      },
+      
+    ],
+  },
+  {
+    id: "p7",
+    title: "Sock Clock",
+    type: "print",
+    kind: "gallery",
+    thumb: "/images/projects/Sock_Clock/sock-clock-thumb.webp",
+    slides: [
+      {
+        image: "/images/projects/Sock_Clock/sock-clock-1.webp",
+        alt: "Sock clock sitting against a wall in a type shop.",
+        caption:
+          "My final project for my Letterpress printing class—a clock. A sock clock! Functional, but unfortunately I messed up the color layers and it came out a little darker than I intended. But, a valuable lesson and I had fun making it nonetheless.",
+      },
+    ],
+  },
+  {
+    id: "p4",
+    title: "Cosmic Curiosities",
+    type: "graphic",
+    kind: "case-study",
+    thumb: "/images/projects/Cosmic_Curiosities/cosmic-cur-thumb.webp",
+    tools: ["Illustrator"],
+    slides: [
+      {
+        image: "/images/projects/Cosmic_Curiosities/cosmic-cur-1.webp",
+        alt: "Project overview",
+        label: "Overview",
+        heading: "Creative Brief",
+        body: "I was tasked with constructing a creative brief for a fake TV show of my creation, then designing a wordmark for said show. I built this project around the two shows that made me fall in love with cartoons again—Futurama and Bob's Burgers. Cosmic Curiosities borrows Futurama's fish-out-of-water premise and absurdity and Bob's Burgers' specific style of comedy and its heart-warming tone, and tries to find some overlap. I wanted a show that felt reasonably producible and something I'd be into watching.",
+      },
+      {
+        image: "/images/projects/Cosmic_Curiosities/cosmic-cur-2.webp",
+        alt: "",
+        label: "Research",
+        heading: "Sketching & Process",
+        body: "The process moved from broad to focused: a type matrix first, then a few directions I felt were worth developing, then feedback. Critique confirmed that the sign aesthetic was the strongest thread. The later iterations introduce an eye icon to layer in the show's alien-ness.",
+      },
+      {
+        image: "/images/projects/Cosmic_Curiosities/cosmic-cur-3.webp",
+        alt: "Project overview",
+        label: "Process",
+        heading: "Refininement",
+        body: "Refinement at this stage was all details. The sign shape was adjusted, lettering and placement were dialed in, and the eye's pupil became a star, a small change that ties 'Cosmic' and 'Curiosities' together. Typeface weight for 'Curiosities' was brought in line with 'Cosmic' for consistency, then spacing was fine-tuned across the mark until the whole thing felt balanced and intentional.",
+      },
+      {
+        image: "/images/projects/Cosmic_Curiosities/cosmic-cur-4.webp",
+        alt: "Project research",
+        label: "Outcome",
+        heading: "Final Design",
+        body: "The final wordmark. The sign format roots it in the physical world of the antique shop, while the star-pupil eye gives it an otherworldly quality. To finish, the ornaments in the sign were leveled with the eye and the stars, and the bevels at the edge of the sign were given more space. I was very happy with how this turned out.",
+      },
+    ],
+  },
+  {
+    id: "p5",
+    title: "Puzleton",
+    type: "graphic",
+    kind: "gallery",
+    thumb: "/images/projects/Puzleton/puzleton-thumb.webp",
+    slides: [
+      {
+        image: "/images/projects/Puzleton/puzleton-1.webp",
+        alt: "Cover spread",
+        caption: "Cover spread",
+      },
+      {
+        image: "/images/projects/Puzleton/puzleton-2.webp",
+        alt: "Inner-sleeve spread",
+        caption: "Inner-sleave spread",
+      },
+      {
+        image: "/images/projects/Puzleton/puzleton-3.webp",
+        alt: "Spread one — the letter",
+        caption: "Spread one — the letter",
+      },
+      {
+        image: "/images/projects/Puzleton/puzleton-4.webp",
+        alt: "Spread two — the message",
+        caption: "Spread two — the message",
+      },
+      {
+        image: "/images/projects/Puzleton/puzleton-5.webp",
+        alt: "Spread three — the answer",
+        caption: "Spread three — the answer",
+      },
+      {
+        image: "/images/projects/Puzleton/puzleton-6.webp",
+        alt: "Spread four — wit",
+        caption: "Spread four — wit",
+      },
+      {
+        image: "/images/projects/Puzleton/puzleton-7.webp",
+        alt: "Spread five — steps",
+        caption: "Spread five — steps",
+      },
+      {
+        image: "/images/projects/Puzleton/puzleton-8.webp",
+        alt: "Spread six — coordinate",
+        caption: "Spread six — coordinate",
+      },
+      {
+        image: "/images/projects/Puzleton/puzleton-9.webp",
+        alt: "Spread seven — lost",
+        caption: "Spread seven — lost",
+      },
+      {
+        image: "/images/projects/Puzleton/puzleton-10.webp",
+        alt: "Spread eight — riddle",
+        caption: "Spread eight — riddle",
+      },
+      {
+        image: "/images/projects/Puzleton/puzleton-11.webp",
+        alt: "Spread nine — dots",
+        caption: "Spread nine — dots",
+      },
+      {
+        image: "/images/projects/Puzleton/puzleton-12.webp",
+        alt: "Spread ten — end",
+        caption: "Spread ten — end",
+      },
+    ],
+  },
+  {
+    id: "p6",
+    title: "P — Letter Abstraction",
+    type: "graphic",
+    kind: "case-study",
+    thumb: "/images/projects/P/p-thumb.webp",
+    tools: ["Illustrator"],
+    slides: [
+      {
+        image: "/images/projects/P/p-1.webp",
+        alt: "Project overview",
+        label: "Overview",
+        heading: "Brief",
+        body: "For this project, I was challenged with taking a letter of the alphabet, randomly assigned, and to identify the most base characteristics in its anatomy so that it was still recognizable after a major abstraction.",
+      },
+      {
+        image: "/images/projects/P/p-2.webp",
+        alt: "Research",
+        label: "Research",
+        heading: "Initial sketching",
+        body: "The process started with volume—sketches pushing the letter in as many directions as I thought were interesting before committing to anything. Early rounds tested both blocky and geometric interpretations and looser, more organic ones. I deliberately keept the range wide to avoid locking in too soon.",
+      },
+      {
+        image: "/images/projects/P/p-3.webp",
+        alt: "Research",
+        label: "Research",
+        heading: "Initial sketching",
+        body: "With a clearer sense of direction, I started getting a bit more specific. Two questions: does the counter stay or go, and how far can the stem be manipulated before the 'P' stops reading? A second thread pushed toward a fuller abstraction leaning into fluidity and shape over strict letterform anatomy to find where the letter's recognition begins to break down.",
+      },
+      {
+        image: "/images/projects/P/p-4.webp",
+        alt: "Process",
+        label: "Process",
+        heading: "Iteration!",
+        body: "I began testing the same core idea across a spectrum of treatments, from blocky and geometric to round and fluid. I tried adding counters to parts of the letterform where they don't typically live. The stem became another variable, kept in some versions, removed in others, to see how much structural information the 'P' actually needs to stay legible.",
+      },
+      {
+        image: "/images/projects/P/p-5.webp",
+        alt: "Iteration",
+        label: "Process",
+        heading: "Contenders",
+        body: "Two finalists went to critique—and the blocky, counter-heavy version on the left won by a wide margin. But it wasn't quite done. The composition still felt slightly off-balance.",
+      },
+      {
+        image: "/images/projects/P/p-6.webp",
+        alt: "refine",
+        label: "Refine",
+        heading: "Balancing out",
+        body: "The refinement phase focused on balance. I measured with overlaid circles, which wasn't the most efficient method, but it felt right!.",
+      },
+      {
+        image: "/images/projects/P/p-7.webp",
+        alt: "final design",
+        label: "Outcome",
+        heading: "Final design",
+        body: "The final design stands in both light and dark—the 'P' is still unmistakably there, stripped down to just enough: the bowl, the stem replaced by three circles, the counter doing the heavy lifting.",
+      },
+    ],
+  },
+  {
+    id: "p3",
+    title: "Please! Come in",
+    type: "print",
+    kind: "gallery",
+    thumb: "/images/projects/Please_Come_In/please-come-in-thumb.webp",
+    slides: [
+      {
+        image: "/images/projects/Please_Come_In/please-come-in-1.webp",
+        alt: "Project two image one",
+        caption: "Please! Come in print hanging in the print shop",
+      },
+      {
+        image: "/images/projects/Please_Come_In/please-come-in-2.webp",
+        alt: "Project two image two",
+        caption: "A few prints framed in my house and my brother's house",
+      },
+    ],
+  },
+  {
+    id: "p8",
+    title: "MVB Grenadine — Type Specimen Book",
+    type: "graphic",
+    kind: "gallery",
+    thumb: "/images/projects/Grenadine/grenadine-thumb.webp",
+    slides: [
+      {
+        image: "/images/projects/Grenadine/grenadine-1.webp",
+        alt: "Cover spread",
+        caption: "Cover spread",
+      },
+      {
+        image: "/images/projects/Grenadine/grenadine-2.webp",
+        alt: "Spread one",
+        caption: "Spread one",
+      },
+      {
+        image: "/images/projects/Grenadine/grenadine-3.webp",
+        alt: "Spread two",
+        caption: "Spread two",
+      },
+      {
+        image: "/images/projects/Grenadine/grenadine-4.webp",
+        alt: "Spread three",
+        caption: "Spread three",
+      },
+      {
+        image: "/images/projects/Grenadine/grenadine-5.webp",
+        alt: "Spread four",
+        caption: "Spread four",
+      },
+      {
+        image: "/images/projects/Grenadine/grenadine-6.webp",
+        alt: "Spread five",
+        caption: "Spread five",
+      },
+      {
+        image: "/images/projects/Grenadine/grenadine-7.webp",
+        alt: "Spread six",
+        caption: "Spread six",
+      },
+      {
+        image: "/images/projects/Grenadine/grenadine-8.webp",
+        alt: "Spread seven",
+        caption: "Spread seven",
+      },
+      {
+        image: "/images/projects/Grenadine/grenadine-9.webp",
+        alt: "Cover eight",
+        caption: "Spread eight",
+      },
+      {
+        image: "/images/projects/Grenadine/grenadine-10.webp",
+        alt: "Spread nine",
+        caption: "Spread nine",
+      },
+      {
+        image: "/images/projects/Grenadine/grenadine-11.webp",
+        alt: "Inner-sleave spread",
+        caption: "Inner-sleeve spread",
+      },
+    ],
+  },
+];
+---
+
+<Base title="Work" activePage="work">
+  <div class="page-content">
+    <div class="page-header">
+      <h2 class="page-title">Work</h2>
+      <div class="page-rule"></div>
+      <span class="page-sub">{projects.length} projects</span>
+    </div>
+
+    <div class="catalog-wrapper">
+      <div class="catalog-tabs">
+        <button class="catalog-tab active" data-filter="all">All</button>
+        <button class="catalog-tab" data-filter="web">Web</button>
+        <button class="catalog-tab" data-filter="graphic">Graphic</button>
+        <button class="catalog-tab" data-filter="print">Print</button>
+      </div>
+
+      <div class="catalog-body">
+        <div class="works-grid" id="works-grid">
+          {
+            projects.map((project) => (
+              <>
+                <div
+                  class="work-card"
+                  data-type={project.type}
+                  data-id={project.id}
+                >
+                  <div class="work-thumb">
+                    <span
+                      class={`work-tag ${project.kind === "case-study" ? "tag-case-study" : "tag-gallery"}`}
+                    >
+                      {project.kind === "case-study" ? "Case study" : "Gallery"}
+                    </span>
+                    <img src={project.thumb} alt={project.title} />
+                  </div>
+                  <div class="work-card-meta">
+                    <span class="work-card-title">{project.title}</span>
+                    <span class="work-card-type">{project.type}</span>
+                  </div>
+                  <div class="work-card-hint">
+                    {project.kind === "case-study"
+                      ? "Click to read more"
+                      : "View images"}
+                  </div>
+                </div>
+
+                <div
+                  class="expanded-panel"
+                  id={project.id}
+                  data-total={project.slides.length}
+                >
+                  <div class="panel-header">
+                    <div>
+                      <div class="panel-title">{project.title}</div>
+                      <div class="panel-meta">
+                        {project.type} &nbsp;·&nbsp;{" "}
+                        {project.kind === "case-study"
+                          ? "Case study"
+                          : "Gallery"}
+                      </div>
+                    </div>
+                    <button
+                      class="close-btn stamp stamp-accent"
+                      data-close={project.id}
+                    >
+                      Close ✕
+                    </button>
+                  </div>
+
+                  <div class="carousel" id={`carousel-${project.id}`}>
+                    {project.slides.map((slide, i) =>
+                      project.kind === "case-study" ? (
+                        <div class={`cs-slide${i === 0 ? " active" : ""}`}>
+                          <div class="slide-image">
+                            <img src={slide.image} alt={slide.alt} />
+                          </div>
+                          <div class="slide-content">
+                            <div>
+                              <div class="slide-section-label">
+                                {(slide as CaseStudySlide).label}
+                              </div>
+                              <div class="slide-heading">
+                                {(slide as CaseStudySlide).heading}
+                              </div>
+                              <div class="slide-text">
+                                {(slide as CaseStudySlide).body}
+                              </div>
+                            </div>
+                            {i === 0 && project.tools && (
+                              <div class="slide-tools">
+                                {project.tools.map((tool) => (
+                                  <span class="slide-tool">{tool}</span>
+                                ))}
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                      ) : project.kind === "gallery" ? (
+                        <div class={`gl-slide${i === 0 ? " active" : ""}`}>
+                          <div class="gl-image">
+                            <img src={slide.image} alt={slide.alt} />
+                          </div>
+                          <div class="gl-caption">
+                            {(slide as GallerySlide).caption}
+                          </div>
+                        </div>
+                      ) : project.kind === "scroll-gallery" ? (
+                        <div class={`scroll-slide${i === 0 ? " active" : ""}`}>
+                          <div class="scroll-image">
+                            <img src={slide.image} alt={slide.alt} />
+                          </div>
+                          <div class="gl-caption">
+                            {(slide as ScrollSlide).caption}
+                            {i === 0 && (
+                              <span class="scroll-hint">
+                                ↕ Scroll to explore
+                              </span>
+                            )}
+                          </div>
+                        </div>
+                      ) : null,
+                    )}
+                  </div>
+
+                  <div class="carousel-nav">
+                    <div class="stamp-nav">
+                      <button
+                        class="stamp-btn stamp stamp-ink prev-btn"
+                        data-panel={project.id}
+                        disabled
+                      >
+                        ← Prev
+                      </button>
+                      <button
+                        class="stamp-btn stamp stamp-ink next-btn"
+                        data-panel={project.id}
+                      >
+                        Next →
+                      </button>
+                    </div>
+                    <div
+                      class="slide-counter stamp stamp-muted"
+                      id={`counter-${project.id}`}
+                    >
+                      1 / {project.slides.length}
+                    </div>
+                  </div>
+                </div>
+              </>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</Base>
+
+<style>
+  .page-content {
+    padding: 4rem 0;
+  }
+
+  /* CATALOG TABS */
+  .catalog-wrapper {
+    position: relative;
+  }
+
+  .catalog-tabs {
+    display: flex;
+    align-items: flex-end;
+    gap: 0;
+    position: relative;
+  }
+
+  .catalog-tab {
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 0 1.6rem;
+    cursor: pointer;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition:
+      filter 0.12s,
+      transform 0.12s;
+    border-radius: 0.6rem 0.6rem 0 0;
+    border: 0.15rem solid rgba(0, 0, 0, 0.25);
+    border-bottom: none;
+    margin-right: -0.15rem;
+  }
+
+  .catalog-tab:nth-child(1) {
+    background: var(--tab-all);
+    color: var(--tab-all-txt);
+    height: 3.2rem;
+    z-index: 1;
+    box-shadow:
+      -0.2rem -0.2rem 0.4rem rgba(0, 0, 0, 0.08),
+      0.2rem -0.2rem 0.4rem rgba(0, 0, 0, 0.06);
+  }
+  .catalog-tab:nth-child(2) {
+    background: var(--tab-web);
+    color: var(--tab-web-txt);
+    height: 3.8rem;
+    z-index: 2;
+    box-shadow:
+      -0.2rem -0.2rem 0.4rem rgba(0, 0, 0, 0.12),
+      0.2rem -0.2rem 0.4rem rgba(0, 0, 0, 0.08);
+  }
+  .catalog-tab:nth-child(3) {
+    background: var(--tab-graphic);
+    color: var(--tab-graphic-txt);
+    height: 4.4rem;
+    z-index: 3;
+    box-shadow:
+      -0.2rem -0.2rem 0.4rem rgba(0, 0, 0, 0.12),
+      0.2rem -0.2rem 0.4rem rgba(0, 0, 0, 0.08);
+  }
+  .catalog-tab:nth-child(4) {
+    background: var(--tab-print);
+    color: var(--tab-print-txt);
+    height: 5rem;
+    z-index: 4;
+    box-shadow:
+      -0.2rem -0.2rem 0.4rem rgba(0, 0, 0, 0.12),
+      0.2rem -0.2rem 0.4rem rgba(0, 0, 0, 0.08);
+  }
+
+  .catalog-tab.active {
+    z-index: 10;
+    filter: brightness(1.08);
+    transform: translateY(-0.2rem);
+  }
+
+  .catalog-tab.active::after {
+    content: "";
+    position: absolute;
+    bottom: -0.2rem;
+    left: 0;
+    right: 0;
+    height: 0.3rem;
+    background: inherit;
+    z-index: 11;
+  }
+
+  .catalog-tab:not(.active):hover {
+    filter: brightness(1.1);
+  }
+
+  .catalog-body {
+    background-color: #ede6d3;
+    background-image: url("/images/textures/cardboard.png");
+    background-repeat: repeat;
+    background-blend-mode: lighten;
+    border: 0.15rem solid rgba(44, 32, 21, 0.3);
+    padding: 1.75rem;
+    position: relative;
+    z-index: 0;
+    box-shadow:
+      inset 0 0.3rem 0.6rem rgba(44, 32, 21, 0.06),
+      inset 0 -0.1rem 0 rgba(44, 32, 21, 0.08),
+      0 0.4rem 1.2rem rgba(44, 32, 21, 0.12),
+      0 0.1rem 0.3rem rgba(44, 32, 21, 0.08);
+  }
+
+  .catalog-body::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("/images/textures/cardboard.png");
+    background-repeat: repeat;
+    opacity: 0.4;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .catalog-body > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* GRID */
+  .works-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.75rem;
+  }
+
+  .work-card {
+    cursor: pointer;
+  }
+
+  .work-thumb {
+    background: rgba(44, 32, 21, 0.05);
+    border: 0.1rem solid rgba(44, 32, 21, 0.1);
+    aspect-ratio: 3/2;
+    overflow: hidden;
+    margin-bottom: 0.75rem;
+    position: relative;
+    transition: border-color 0.15s;
+  }
+
+  .work-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .work-card:hover .work-thumb {
+    border-color: var(--accent);
+  }
+  .work-card:hover .work-card-title {
+    color: var(--accent);
+  }
+
+  .work-tag {
+    position: absolute;
+    top: 0.8rem;
+    left: 0.8rem;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.7rem;
+    z-index: 1;
+  }
+
+  .tag-case-study {
+    background: var(--accent);
+    color: var(--paper);
+  }
+  .tag-gallery {
+    background: rgba(139, 107, 61, 0.15);
+    color: var(--ochre);
+    border: 0.1rem solid rgba(139, 107, 61, 0.3);
+  }
+
+  .work-card-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.2rem;
+  }
+  .work-card-title {
+    font-family: var(--font-serif);
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--ink);
+    transition: color 0.15s;
+  }
+  .work-card-type {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ochre);
+  }
+  .work-card-hint {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    letter-spacing: 0.08em;
+    color: rgba(44, 32, 21, 0.3);
+  }
+
+  /* EXPANDED PANEL */
+  .expanded-panel {
+    grid-column: 1 / -1;
+    border: 0.15rem solid rgba(44, 32, 21, 0.3);
+    background: rgba(44, 32, 21, 0.02);
+    display: none;
+    animation: fadeIn 0.2s ease;
+    margin-top: 0.25rem;
+  }
+
+  .expanded-panel.open {
+    display: block;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-0.4rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 1.5rem;
+    border-bottom: 0.1rem solid var(--rule);
+  }
+  .panel-title {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 0.3rem;
+  }
+  .panel-meta {
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .close-btn {
+    cursor: pointer;
+    background: none;
+    font-size: 1rem;
+    padding: 0.5rem 1.1rem;
+    transition: all 0.1s;
+  }
+  .close-btn:hover {
+    filter: opacity(1);
+  }
+
+  /* CAROUSEL — fixed height via visibility trick */
+  .carousel {
+    position: relative;
+  }
+
+  .cs-slide {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    pointer-events: none;
+  }
+
+  .cs-slide.active {
+    visibility: visible;
+    position: relative;
+    pointer-events: auto;
+  }
+
+  .gl-slide {
+    display: flex;
+    flex-direction: column;
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    pointer-events: none;
+  }
+
+  .gl-slide.active {
+    visibility: visible;
+    position: relative;
+    pointer-events: auto;
+  }
+
+  .scroll-slide {
+    display: flex;
+    flex-direction: column;
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    pointer-events: none;
+  }
+
+  .scroll-slide.active {
+    visibility: visible;
+    position: relative;
+    pointer-events: auto;
+  }
+
+  .scroll-image {
+    aspect-ratio: 16/9;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    border-bottom: 0.1rem solid var(--rule);
+    cursor: ns-resize;
+  }
+
+  .scroll-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .scroll-hint {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    color: rgba(44, 32, 21, 0.35);
+    margin-left: 1rem;
+  }
+
+  .slide-image {
+    background: rgba(44, 32, 21, 0.07);
+    border-right: 0.1rem solid var(--rule);
+    aspect-ratio: 4/3;
+    overflow: hidden;
+  }
+  .slide-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .slide-content {
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .slide-section-label {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+  .slide-heading {
+    font-family: var(--font-display);
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 0.75rem;
+  }
+  .slide-text {
+    font-size: 1.3rem;
+    line-height: 1.85;
+    color: var(--ink-light);
+    font-style: italic;
+    flex: 1;
+  }
+  .slide-tools {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+  .slide-tool {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    letter-spacing: 0.08em;
+    color: var(--ink);
+    border: 0.1rem solid var(--rule);
+    padding: 0.3rem 0.8rem;
+  }
+
+  .gl-image {
+    background: rgba(44, 32, 21, 0.07);
+    border-bottom: 0.1rem solid var(--rule);
+    aspect-ratio: 16/9;
+    overflow: hidden;
+  }
+  .gl-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .gl-caption {
+    padding: 1rem 1.5rem;
+    font-size: 1.3rem;
+    font-style: italic;
+    color: var(--ink-light);
+    line-height: 1.7;
+  }
+
+  /* CAROUSEL NAV */
+  .carousel-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.9rem 1.5rem;
+    border-top: 0.1rem solid var(--rule);
+    background: rgba(44, 32, 21, 0.015);
+  }
+  .stamp-nav {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+  .stamp-btn {
+    font-size: 1.1rem;
+    padding: 0.4rem 1.2rem;
+    cursor: pointer;
+    background: none;
+    transition: all 0.1s;
+  }
+  .stamp-btn.prev-btn {
+    transform: rotate(0.4deg);
+  }
+  .stamp-btn.next-btn {
+    transform: rotate(-0.3deg);
+  }
+  .stamp-btn:hover:not(:disabled) {
+    filter: opacity(1);
+  }
+  .stamp-btn:active:not(:disabled) {
+    transform: translate(0.1rem, 0.1rem);
+  }
+  .stamp-btn:disabled {
+    filter: opacity(0.25);
+    cursor: default;
+  }
+  .slide-counter {
+    font-size: 1.1rem;
+    padding: 0.3rem 1rem;
+    transform: rotate(0.3deg);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .works-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .catalog-tab {
+      font-size: 0.9rem;
+      padding: 0 2rem;
+    }
+    .catalog-tab:nth-child(1) {
+      height: 3.2rem;
+    }
+    .catalog-tab:nth-child(2) {
+      height: 3.8rem;
+    }
+    .catalog-tab:nth-child(3) {
+      height: 4.4rem;
+    }
+    .catalog-tab:nth-child(4) {
+      height: 5rem;
+    }
+
+    .catalog-body {
+      padding: 1.25rem;
+    }
+
+    .cs-slide {
+      grid-template-columns: 1fr;
+    }
+
+    .slide-image {
+      border-right: none;
+      border-bottom: 0.1rem solid var(--rule);
+      aspect-ratio: 16/9;
+    }
+
+    .panel-header {
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .slide-content {
+      min-height: 18rem;
+      max-height: 18rem;
+      overflow-y: auto;
+    }
+
+    .gl-caption {
+      min-height: 6rem;
+      max-height: 6rem;
+      overflow-y: auto;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .works-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .catalog-tab {
+      font-size: 1rem;
+      padding: 0 1.6rem;
+      letter-spacing: 0.08em;
+    }
+    .catalog-tab:nth-child(1) {
+      height: 3.4rem;
+    }
+    .catalog-tab:nth-child(2) {
+      height: 4rem;
+    }
+    .catalog-tab:nth-child(3) {
+      height: 4.6rem;
+    }
+    .catalog-tab:nth-child(4) {
+      height: 5.2rem;
+    }
+
+    .catalog-body {
+      padding: 1rem;
+    }
+
+    .panel-title {
+      font-size: 1.6rem;
+    }
+    .stamp-btn {
+      font-size: 0.9rem;
+      padding: 0.4rem 0.8rem;
+    }
+    .slide-counter {
+      font-size: 0.9rem;
+    }
+    .carousel-nav {
+      padding: 0.75rem 1rem;
+    }
+  }
+</style>
+
+<script>
+  const state: Record<string, number> = {};
+
+  function getSlides(panelId: string) {
+    const carousel = document.getElementById(`carousel-${panelId}`);
+    return carousel
+      ? Array.from(
+          carousel.querySelectorAll(".cs-slide, .gl-slide, .scroll-slide"),
+        )
+      : [];
+  }
+
+  function goTo(panelId: string, idx: number) {
+    const slides = getSlides(panelId);
+    slides.forEach((s) => s.classList.remove("active"));
+    slides[idx]?.classList.add("active");
+    state[panelId] = idx;
+
+    const counter = document.getElementById(`counter-${panelId}`);
+    if (counter) counter.textContent = `${idx + 1} / ${slides.length}`;
+
+    const panel = document.getElementById(panelId);
+    if (!panel) return;
+    const prevBtn = panel.querySelector(".prev-btn") as HTMLButtonElement;
+    const nextBtn = panel.querySelector(".next-btn") as HTMLButtonElement;
+    if (prevBtn) prevBtn.disabled = idx === 0;
+    if (nextBtn) nextBtn.disabled = idx === slides.length - 1;
+  }
+
+  function openPanel(panelId: string) {
+    document
+      .querySelectorAll(".expanded-panel.open")
+      .forEach((el) => el.classList.remove("open"));
+    const panel = document.getElementById(panelId);
+    if (!panel) return;
+    panel.classList.add("open");
+    goTo(panelId, 0);
+    setTimeout(
+      () => panel.scrollIntoView({ behavior: "smooth", block: "nearest" }),
+      50,
+    );
+  }
+
+  function closePanel(panelId: string) {
+    document.getElementById(panelId)?.classList.remove("open");
+  }
+
+  document.querySelectorAll(".work-card").forEach((card) => {
+    card.addEventListener("click", () => {
+      const id = (card as HTMLElement).dataset.id;
+      if (!id) return;
+      const panel = document.getElementById(id);
+      if (panel?.classList.contains("open")) {
+        closePanel(id);
+      } else {
+        openPanel(id);
+      }
+    });
+  });
+
+  document.querySelectorAll(".close-btn").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const id = (btn as HTMLElement).dataset.close;
+      if (id) closePanel(id);
+    });
+  });
+
+  document.querySelectorAll(".prev-btn").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const id = (btn as HTMLElement).dataset.panel;
+      if (!id) return;
+      const current = state[id] ?? 0;
+      if (current > 0) goTo(id, current - 1);
+    });
+  });
+
+  document.querySelectorAll(".next-btn").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const id = (btn as HTMLElement).dataset.panel;
+      if (!id) return;
+      const slides = getSlides(id);
+      const current = state[id] ?? 0;
+      if (current < slides.length - 1) goTo(id, current + 1);
+    });
+  });
+
+  document.querySelectorAll(".catalog-tab").forEach((tab) => {
+    tab.addEventListener("click", () => {
+      document
+        .querySelectorAll(".catalog-tab")
+        .forEach((t) => t.classList.remove("active"));
+      tab.classList.add("active");
+      const filter = (tab as HTMLElement).dataset.filter;
+      document
+        .querySelectorAll(".expanded-panel.open")
+        .forEach((el) => el.classList.remove("open"));
+      document.querySelectorAll(".work-card").forEach((card) => {
+        const type = (card as HTMLElement).dataset.type;
+        (card as HTMLElement).style.display =
+          filter === "all" || type === filter ? "" : "none";
+      });
+    });
+  });
+</script>

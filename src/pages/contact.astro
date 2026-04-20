@@ -1,0 +1,430 @@
+---
+import Base from "../layouts/Base.astro";
+---
+
+<Base title="Contact" activePage="contact">
+  <div class="page-content">
+    <div class="page-header">
+      <h2 class="page-title">Get in touch</h2>
+      <div class="page-rule"></div>
+    </div>
+
+    <div class="contact-grid">
+      <div class="form-section">
+        <div class="section-label">Shoot me a message</div>
+        <p class="form-intro">
+          Have a project in mind, or just want to say hello? Fill out the form
+          and I'll get back to you as soon as I can.
+        </p>
+
+        <form class="contact-form" id="contact-form">
+          <div class="form-field">
+            <label class="field-label" for="name">Your name</label>
+            <input
+              class="field-input"
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Jane Smith"
+              required
+            />
+          </div>
+          <div class="form-field">
+            <label class="field-label" for="email">Your email</label>
+            <input
+              class="field-input"
+              type="email"
+              id="email"
+              name="email"
+              placeholder="jane@example.com"
+              required
+            />
+          </div>
+          <div class="form-field">
+            <label class="field-label" for="message">What's on your mind?</label
+            >
+            <textarea
+              class="field-input"
+              id="message"
+              name="message"
+              placeholder="Tell me about your project, or just say hi..."
+              required></textarea>
+          </div>
+          <button type="submit" class="submit-btn stamp stamp-accent"
+            >Send message</button
+          >
+        </form>
+
+        <div class="success-message" id="success-message">
+          <div class="stamp stamp-accent success-stamp">Message sent</div>
+          <p class="success-text">
+            Thanks for reaching out — I'll get back to you as soon as I can.
+          </p>
+        </div>
+      </div>
+
+      <div class="details-section">
+        <div class="direct-email">
+          <div class="section-label">Direct email</div>
+          <span class="email-label">You can reach me at</span>
+          <a href="mailto:drew@drewreed.me" class="email-address"
+            >drew@drewreed.me</a
+          >
+        </div>
+
+        <div class="social-section">
+          <div class="section-label">Find me online</div>
+          <div class="social-links">
+            <a
+              href="https://www.linkedin.com/in/drewreed22/"
+              class="social-link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <div class="social-icon">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"
+                  ></path>
+                  <rect x="2" y="9" width="4" height="12"></rect>
+                  <circle cx="4" cy="4" r="2"></circle>
+                </svg>
+              </div>
+              <div class="social-text">
+                <span class="social-name">LinkedIn</span>
+                <span class="social-handle">/in/drewreed22</span>
+              </div>
+              <span class="social-arrow">→</span>
+            </a>
+
+            <a
+              href="https://github.com/reedrew"
+              class="social-link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <div class="social-icon">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"
+                  ></path>
+                </svg>
+              </div>
+              <div class="social-text">
+                <span class="social-name">GitHub</span>
+                <span class="social-handle">reedrew</span>
+              </div>
+              <span class="social-arrow">→</span>
+            </a>
+
+            <a
+              href="https://dribbble.com/drewreed"
+              class="social-link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <div class="social-icon">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <path
+                    d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"
+                  ></path>
+                </svg>
+              </div>
+              <div class="social-text">
+                <span class="social-name">Dribbble</span>
+                <span class="social-handle">drewreed</span>
+              </div>
+              <span class="social-arrow">→</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="availability">
+          <div class="stamp stamp-accent avail-stamp">Available for work</div>
+          <p class="avail-text">
+            Currently open to freelance projects and full-time opportunities.
+            Based in Indianapolis, working remotely or locally.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</Base>
+
+<style>
+  .page-content {
+    padding: 4rem 0;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .form-intro {
+    font-size: 1.4rem;
+    line-height: 1.8;
+    color: var(--ink-light);
+    font-style: italic;
+    margin-bottom: 1.75rem;
+  }
+
+  .form-field {
+    margin-bottom: 1.25rem;
+  }
+
+  .field-label {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ochre);
+    display: block;
+    margin-bottom: 0.6rem;
+  }
+
+  .field-input {
+    width: 100%;
+    background: rgba(44, 32, 21, 0.03);
+    border: 0.15rem solid rgba(44, 32, 21, 0.2);
+    padding: 0.8rem 1rem;
+    font-family: var(--font-serif);
+    font-size: 1.3rem;
+    color: var(--ink);
+    outline: none;
+    transition: border-color 0.15s;
+    appearance: none;
+    border-radius: 0;
+  }
+
+  .field-input:focus {
+    border-color: var(--accent);
+    background: rgba(200, 75, 31, 0.02);
+  }
+  .field-input::placeholder {
+    color: rgba(44, 32, 21, 0.3);
+    font-style: italic;
+  }
+  textarea.field-input {
+    resize: vertical;
+    min-height: 12rem;
+    line-height: 1.7;
+  }
+
+  .submit-btn {
+    width: 100%;
+    margin-top: 0.5rem;
+    cursor: pointer;
+    font-size: 1.1rem;
+    padding: 1rem 2rem;
+    background: none;
+    transition: all 0.1s;
+  }
+  .submit-btn:active {
+    transform: rotate(-0.5deg) translate(0.1rem, 0.1rem);
+  }
+
+  .direct-email {
+    margin-bottom: 2.5rem;
+  }
+
+  .email-label {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ochre);
+    display: block;
+    margin-bottom: 0.6rem;
+  }
+
+  .email-address {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 0.15rem solid var(--accent);
+    padding-bottom: 0.2rem;
+    transition: color 0.15s;
+  }
+  .email-address:hover {
+    color: var(--accent);
+  }
+
+  .social-section {
+    margin-bottom: 2.5rem;
+  }
+  .social-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .social-link {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    text-decoration: none;
+    padding: 1rem 1.4rem;
+    border: 0.15rem solid rgba(44, 32, 21, 0.18);
+    background: rgba(44, 32, 21, 0.02);
+    transition: all 0.15s;
+  }
+  .social-link:hover {
+    border-color: var(--accent);
+    background: var(--accent-light);
+  }
+  .social-link:hover .social-name,
+  .social-link:hover .social-arrow {
+    color: var(--accent);
+  }
+
+  .social-icon {
+    width: 3.2rem;
+    height: 3.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(44, 32, 21, 0.06);
+    flex-shrink: 0;
+    color: var(--ink);
+  }
+  .social-icon svg {
+    width: 1.6rem;
+    height: 1.6rem;
+  }
+
+  .social-text {
+    flex: 1;
+  }
+  .social-name {
+    font-family: var(--font-mono);
+    font-size: 1.1rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink);
+    display: block;
+    transition: color 0.15s;
+  }
+  .social-handle {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    letter-spacing: 0.08em;
+    color: var(--ochre);
+    display: block;
+    margin-top: 0.1rem;
+  }
+  .social-arrow {
+    font-size: 1.4rem;
+    color: rgba(44, 32, 21, 0.25);
+    transition: color 0.15s;
+  }
+
+  .availability {
+    border: 0.15rem solid rgba(44, 32, 21, 0.15);
+    padding: 1rem 1.25rem;
+    background: rgba(44, 32, 21, 0.02);
+  }
+  .avail-stamp {
+    margin-bottom: 0.75rem;
+  }
+  .avail-text {
+    font-size: 1.3rem;
+    line-height: 1.75;
+    color: var(--ink-light);
+    font-style: italic;
+  }
+
+  .success-message {
+    display: none;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 2rem 0;
+  }
+
+  .success-message.visible {
+    display: flex;
+  }
+
+  .success-stamp {
+    align-self: flex-start;
+  }
+
+  .success-text {
+    font-family: var(--font-fell);
+    font-style: italic;
+    font-size: 1.6rem;
+    line-height: 1.8;
+    color: var(--ink-light);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .email-address {
+      font-size: 1.6rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .email-address {
+      font-size: 1.4rem;
+      word-break: break-all;
+    }
+    .form-intro {
+      font-size: 1.3rem;
+    }
+  }
+</style>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const success = document.getElementById('success-message');
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const data = new FormData(form);
+
+    const res = await fetch('https://formspree.io/f/mlgangna', {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    });
+
+    if (res.ok) {
+      form.style.display = 'none';
+      success?.classList.add('visible');
+    } else {
+      alert('Something went wrong — please try emailing me directly.');
+    }
+  });
+</script>
