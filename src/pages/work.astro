@@ -520,8 +520,10 @@ const projects: Project[] = [
                         </div>
                       ) : project.kind === "scroll-gallery" ? (
                         <div class={`scroll-slide${i === 0 ? " active" : ""}`}>
-                          <div class="scroll-image">
-                            <img src={slide.image} alt={slide.alt} />
+                          <div class="scroll-image-wrap">
+                            <div class="scroll-image">
+                              <img src={slide.image} alt={slide.alt} />
+                            </div>
                           </div>
                           <div class="gl-caption">
                             {(slide as ScrollSlide).caption}
@@ -721,7 +723,7 @@ const projects: Project[] = [
     overflow: hidden;
     margin-bottom: 0.75rem;
     position: relative;
-    transition: border-color 0.15s;
+    transition: border-color 0.15s, transform 0.2s ease-out, box-shadow 0.2s ease-out;
   }
 
   .work-thumb img {
@@ -731,6 +733,8 @@ const projects: Project[] = [
   }
   .work-card:hover .work-thumb {
     border-color: var(--accent);
+    transform: translateY(-0.3rem);
+    box-shadow: 0 0.5rem 1.2rem rgba(44, 32, 21, 0.14), 0 0.15rem 0.3rem rgba(44, 32, 21, 0.08);
   }
   .work-card:hover .work-card-title {
     color: var(--accent);
@@ -753,9 +757,8 @@ const projects: Project[] = [
     color: var(--paper);
   }
   .tag-gallery {
-    background: rgba(139, 107, 61, 0.15);
-    color: var(--ochre);
-    border: 0.1rem solid rgba(139, 107, 61, 0.3);
+    background: var(--ochre);
+    color: var(--paper);
   }
 
   .work-card-meta {
@@ -791,7 +794,8 @@ const projects: Project[] = [
     border: 0.15rem solid rgba(44, 32, 21, 0.3);
     background: rgba(44, 32, 21, 0.02);
     display: none;
-    animation: fadeIn 0.2s ease;
+    animation: unfold 0.5s ease-out;
+    transform-origin: top;
     margin-top: 0.25rem;
   }
 
@@ -799,14 +803,14 @@ const projects: Project[] = [
     display: block;
   }
 
-  @keyframes fadeIn {
+  @keyframes unfold {
     from {
-      opacity: 0;
-      transform: translateY(-0.4rem);
+      opacity: 0.4;
+      transform: scaleY(0.97);
     }
     to {
       opacity: 1;
-      transform: translateY(0);
+      transform: scaleY(1);
     }
   }
 
@@ -852,6 +856,7 @@ const projects: Project[] = [
     display: grid;
     grid-template-columns: 1fr 1fr;
     visibility: hidden;
+    opacity: 0;
     position: absolute;
     top: 0;
     left: 0;
@@ -861,6 +866,7 @@ const projects: Project[] = [
 
   .cs-slide.active {
     visibility: visible;
+    opacity: 1;
     position: relative;
     pointer-events: auto;
   }
@@ -869,6 +875,7 @@ const projects: Project[] = [
     display: flex;
     flex-direction: column;
     visibility: hidden;
+    opacity: 0;
     position: absolute;
     top: 0;
     left: 0;
@@ -878,6 +885,7 @@ const projects: Project[] = [
 
   .gl-slide.active {
     visibility: visible;
+    opacity: 1;
     position: relative;
     pointer-events: auto;
   }
@@ -886,6 +894,7 @@ const projects: Project[] = [
     display: flex;
     flex-direction: column;
     visibility: hidden;
+    opacity: 0;
     position: absolute;
     top: 0;
     left: 0;
@@ -895,16 +904,63 @@ const projects: Project[] = [
 
   .scroll-slide.active {
     visibility: visible;
+    opacity: 1;
     position: relative;
     pointer-events: auto;
+  }
+
+  .slide-from-right { animation: slideFromRight 0.22s ease-out; }
+  .slide-from-left  { animation: slideFromLeft  0.22s ease-out; }
+
+  @keyframes slideFromRight {
+    from { opacity: 0.4; transform: translateX(0.75rem); }
+    to   { opacity: 1;   transform: translateX(0); }
+  }
+
+  @keyframes slideFromLeft {
+    from { opacity: 0.4; transform: translateX(-0.75rem); }
+    to   { opacity: 1;   transform: translateX(0); }
+  }
+
+  .scroll-image-wrap {
+    position: relative;
+    border-bottom: 0.1rem solid var(--rule);
+    box-shadow: 0 0.6rem 1rem -0.3rem rgba(44, 32, 21, 0.22);
+  }
+
+  .scroll-image-wrap::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 5rem;
+    background: linear-gradient(to bottom, transparent, rgba(245, 240, 232, 0.7));
+    pointer-events: none;
+    z-index: 1;
   }
 
   .scroll-image {
     aspect-ratio: 16/9;
     overflow-y: scroll;
     overflow-x: hidden;
-    border-bottom: 0.1rem solid var(--rule);
     cursor: ns-resize;
+    scrollbar-width: auto;
+    scrollbar-color: var(--ochre) rgba(44, 32, 21, 0.08);
+  }
+
+  .scroll-image::-webkit-scrollbar {
+    width: 0.8rem;
+  }
+
+  .scroll-image::-webkit-scrollbar-track {
+    background: rgba(44, 32, 21, 0.08);
+    border-left: 0.1rem solid rgba(44, 32, 21, 0.1);
+  }
+
+  .scroll-image::-webkit-scrollbar-thumb {
+    background: var(--ochre);
+    border-radius: 0;
   }
 
   .scroll-image img {
@@ -1206,14 +1262,16 @@ const projects: Project[] = [
       : [];
   }
 
-  function goTo(panelId: string, idx: number) {
+  function goTo(panelId: string, idx: number, dir: "next" | "prev" | "none" = "none") {
     const slides = getSlides(panelId);
-    slides.forEach((s) => s.classList.remove("active"));
+    slides.forEach((s) => s.classList.remove("active", "slide-from-right", "slide-from-left"));
     const activeSlide = slides[idx];
     activeSlide?.classList.add("active");
+    if (dir === "next") activeSlide?.classList.add("slide-from-right");
+    if (dir === "prev") activeSlide?.classList.add("slide-from-left");
     state[panelId] = idx;
 
-    const scrollImg = activeSlide?.querySelector(".scroll-image");
+    const scrollImg = activeSlide?.querySelector<HTMLElement>(".scroll-image");
     if (scrollImg) scrollImg.scrollTop = 0;
 
     const counter = document.getElementById(`counter-${panelId}`);
@@ -1231,8 +1289,30 @@ const projects: Project[] = [
     document
       .querySelectorAll(".expanded-panel.open")
       .forEach((el) => el.classList.remove("open"));
+
     const panel = document.getElementById(panelId);
     if (!panel) return;
+
+    const grid = document.getElementById("works-grid")!;
+    const cards = Array.from(
+      grid.querySelectorAll<HTMLElement>(".work-card")
+    ).filter((c) => c.style.display !== "none");
+    const card = grid.querySelector<HTMLElement>(`[data-id="${panelId}"]`);
+
+    if (card && cards.length) {
+      const cols = getComputedStyle(grid).gridTemplateColumns.split(" ").length;
+      const cardIdx = cards.indexOf(card);
+      const rowLastIdx = Math.min(
+        Math.floor(cardIdx / cols) * cols + cols - 1,
+        cards.length - 1
+      );
+      const rowLastCard = cards[rowLastIdx];
+      const after = rowLastCard.nextElementSibling?.classList.contains("expanded-panel")
+        ? rowLastCard.nextElementSibling.nextSibling
+        : rowLastCard.nextSibling;
+      grid.insertBefore(panel, after ?? null);
+    }
+
     panel.classList.add("open");
     goTo(panelId, 0);
     setTimeout(
@@ -1272,7 +1352,7 @@ const projects: Project[] = [
       const id = (btn as HTMLElement).dataset.panel;
       if (!id) return;
       const current = state[id] ?? 0;
-      if (current > 0) goTo(id, current - 1);
+      if (current > 0) goTo(id, current - 1, "prev");
     });
   });
 
@@ -1283,7 +1363,7 @@ const projects: Project[] = [
       if (!id) return;
       const slides = getSlides(id);
       const current = state[id] ?? 0;
-      if (current < slides.length - 1) goTo(id, current + 1);
+      if (current < slides.length - 1) goTo(id, current + 1, "next");
     });
   });
 

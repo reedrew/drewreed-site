@@ -50,9 +50,7 @@ import Base from "../layouts/Base.astro";
               placeholder="Tell me about your project, or just say hi..."
               required></textarea>
           </div>
-          <button type="submit" class="submit-btn stamp stamp-accent"
-            >Send message</button
-          >
+          <button type="submit" class="submit-btn">Send message</button>
         </form>
 
         <div class="success-message" id="success-message">
@@ -239,13 +237,20 @@ import Base from "../layouts/Base.astro";
     width: 100%;
     margin-top: 0.5rem;
     cursor: pointer;
+    display: inline-block;
+    font-family: var(--font-mono);
     font-size: 1.1rem;
-    padding: 1rem 2rem;
-    background: none;
-    transition: all 0.1s;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--paper);
+    background: var(--accent);
+    border: 0.15rem solid var(--accent);
+    padding: 0.6rem 1.25rem;
+    transition: all 0.15s;
   }
-  .submit-btn:active {
-    transform: rotate(-0.5deg) translate(0.1rem, 0.1rem);
+  .submit-btn:hover {
+    background: var(--ink);
+    border-color: var(--ink);
   }
 
   .direct-email {
