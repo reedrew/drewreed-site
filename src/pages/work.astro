@@ -1209,8 +1209,12 @@ const projects: Project[] = [
   function goTo(panelId: string, idx: number) {
     const slides = getSlides(panelId);
     slides.forEach((s) => s.classList.remove("active"));
-    slides[idx]?.classList.add("active");
+    const activeSlide = slides[idx];
+    activeSlide?.classList.add("active");
     state[panelId] = idx;
+
+    const scrollImg = activeSlide?.querySelector(".scroll-image");
+    if (scrollImg) scrollImg.scrollTop = 0;
 
     const counter = document.getElementById(`counter-${panelId}`);
     if (counter) counter.textContent = `${idx + 1} / ${slides.length}`;

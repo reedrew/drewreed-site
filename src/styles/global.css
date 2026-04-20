@@ -243,7 +243,7 @@ a { color: inherit; }
   .nav-name { font-size: 3.2rem; }
   .nav-eyebrow { font-size: 0.85rem; letter-spacing: 0.15em; }
   .nav-tagline { font-size: 1.2rem; }
-  .nav-link { font-size: 1rem; padding: 0.6rem 1rem; letter-spacing: 0.08em; }
+  .nav-link { font-size: 1rem; padding: 0.6rem 1rem; letter-spacing: 0.08em; flex: 1; text-align: center; }
 }
 
 @media (max-width: 480px) {
@@ -251,7 +251,7 @@ a { color: inherit; }
   .nav-name { font-size: 2.8rem; }
   .nav-eyebrow { display: none; }
   .nav-tagline { font-size: 1.1rem; }
-  .nav-link { font-size: 0.9rem; padding: 0.6rem 0.8rem; letter-spacing: 0.05em; }
+  .nav-link { font-size: 0.9rem; padding: 0.6rem 0.8rem; letter-spacing: 0.05em; flex: 1; text-align: center; }
   .page-title { font-size: 2.8rem; }
   .page-sub { display: none; }
 }
