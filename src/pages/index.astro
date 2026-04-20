@@ -6,13 +6,13 @@ const featuredProject = {
   type: 'Web Design',
   image: '/images/projects/Knowledge_Vault/kv-featured-thumb.webp',
   alt: 'The Knowledge Vault — Intranet Redesign',
-  href: '/work',
+  href: '/work#knowledge-vault',
 };
 
 const previewProjects = [
-  { title: 'Crazy Charlie\'s Salsa', type: 'Graphic Design', image: '/images/projects/CCS/ccsalsa-thumb.webp', alt: 'Crazy Charlie\'s Salsa redesign' },
-  { title: 'Hot & Knotty', type: 'Print', image: '/images/projects/HnK/hot-n-knotty-thumb.webp', alt: 'Hot & Knotty print' },
-  { title: 'Cosmic Curiosities', type: 'Graphic Design', image: '/images/projects/Cosmic_Curiosities/cosmic-cur-thumb.webp', alt: 'Cosmic Curiosities' },
+  { title: 'Crazy Charlie\'s Salsa', type: 'Graphic Design', image: '/images/projects/CCS/ccsalsa-thumb.webp', alt: 'Crazy Charlie\'s Salsa redesign', href: '/work#crazy-charlies-salsa' },
+  { title: 'Hot & Knotty', type: 'Print', image: '/images/projects/HnK/hot-n-knotty-thumb.webp', alt: 'Hot & Knotty print', href: '/work#hot-and-knotty' },
+  { title: 'Cosmic Curiosities', type: 'Graphic Design', image: '/images/projects/Cosmic_Curiosities/cosmic-cur-thumb.webp', alt: 'Cosmic Curiosities', href: '/work#cosmic-curiosities' },
 ];
 ---
 
@@ -45,7 +45,7 @@ const previewProjects = [
     </div>
     <div class="preview-grid">
       {previewProjects.map((project) => (
-        <a href="/work" class="preview-item">
+        <a href={project.href} class="preview-item">
           <div class="preview-thumb">
             <img src={project.image} alt={project.alt} />
           </div>

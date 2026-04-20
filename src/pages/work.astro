@@ -50,7 +50,7 @@ type Project = {
 
 const projects: Project[] = [
   {
-    id: "p1",
+    id: "crazy-charlies-salsa",
     title: "Crazy Charlie's Salsa",
     type: "graphic",
     kind: "case-study",
@@ -88,7 +88,7 @@ const projects: Project[] = [
     ],
   },
   {
-    id: "p2",
+    id: "hot-and-knotty",
     title: "Hot & Knotty",
     type: "print",
     kind: "gallery",
@@ -107,7 +107,7 @@ const projects: Project[] = [
     ],
   },
   {
-    id: "p9",
+    id: "knowledge-vault",
     title: "The Knowledge Vault — Intranet Redesign",
     type: "web",
     kind: "scroll-gallery",
@@ -147,7 +147,7 @@ const projects: Project[] = [
     ],
   },
   {
-    id: "p7",
+    id: "sock-clock",
     title: "Sock Clock",
     type: "print",
     kind: "gallery",
@@ -162,7 +162,7 @@ const projects: Project[] = [
     ],
   },
   {
-    id: "p4",
+    id: "cosmic-curiosities",
     title: "Cosmic Curiosities",
     type: "graphic",
     kind: "case-study",
@@ -200,7 +200,7 @@ const projects: Project[] = [
     ],
   },
   {
-    id: "p5",
+    id: "puzleton",
     title: "Puzleton",
     type: "graphic",
     kind: "gallery",
@@ -269,7 +269,7 @@ const projects: Project[] = [
     ],
   },
   {
-    id: "p6",
+    id: "p-letter-abstraction",
     title: "P — Letter Abstraction",
     type: "graphic",
     kind: "case-study",
@@ -328,7 +328,7 @@ const projects: Project[] = [
     ],
   },
   {
-    id: "p3",
+    id: "please-come-in",
     title: "Please! Come in",
     type: "print",
     kind: "gallery",
@@ -347,7 +347,7 @@ const projects: Project[] = [
     ],
   },
   {
-    id: "p8",
+    id: "mvb-grenadine",
     title: "MVB Grenadine — Type Specimen Book",
     type: "graphic",
     kind: "gallery",
@@ -1218,6 +1218,14 @@ const projects: Project[] = [
       if (current < slides.length - 1) goTo(id, current + 1);
     });
   });
+
+  const hash = window.location.hash.slice(1);
+  if (hash) {
+    const panel = document.getElementById(hash);
+    if (panel?.classList.contains("expanded-panel")) {
+      openPanel(hash);
+    }
+  }
 
   document.querySelectorAll(".catalog-tab").forEach((tab) => {
     tab.addEventListener("click", () => {
