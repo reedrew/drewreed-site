@@ -567,6 +567,13 @@ const projects: Project[] = [
       </div>
     </div>
   </div>
+
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightbox-close">✕</button>
+    <div class="lightbox-inner">
+      <img class="lightbox-img" id="lightbox-img" src="" alt="" />
+    </div>
+  </div>
 </Base>
 
 <style>
@@ -1082,7 +1089,7 @@ const projects: Project[] = [
 
     .gl-caption {
       min-height: 6rem;
-      max-height: 6rem;
+      max-height: 12rem;
       overflow-y: auto;
     }
   }
@@ -1127,6 +1134,63 @@ const projects: Project[] = [
     .carousel-nav {
       padding: 0.75rem 1rem;
     }
+  }
+
+  /* LIGHTBOX */
+  .slide-image img,
+  .gl-image img,
+  .scroll-image img {
+    cursor: zoom-in;
+  }
+
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(20, 14, 8, 0.92);
+    z-index: 1000;
+    overflow-y: auto;
+    cursor: zoom-out;
+  }
+
+  .lightbox.open {
+    display: block;
+  }
+
+  .lightbox-close {
+    position: fixed;
+    top: 1.25rem;
+    right: 1.5rem;
+    font-family: var(--font-mono);
+    font-size: 1.2rem;
+    color: var(--paper);
+    background: none;
+    border: 0.1rem solid rgba(255, 255, 255, 0.25);
+    padding: 0.35rem 0.75rem;
+    cursor: pointer;
+    z-index: 1001;
+    transition: border-color 0.15s;
+  }
+
+  .lightbox-close:hover {
+    border-color: rgba(255, 255, 255, 0.7);
+  }
+
+  .lightbox-inner {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 2rem;
+    cursor: zoom-out;
+  }
+
+  .lightbox-img {
+    display: block;
+    max-width: min(90vw, 1200px);
+    width: 100%;
+    height: auto;
+    cursor: default;
   }
 </style>
 
@@ -1243,5 +1307,40 @@ const projects: Project[] = [
           filter === "all" || type === filter ? "" : "none";
       });
     });
+  });
+
+  const lightbox = document.getElementById("lightbox")!;
+  const lightboxImg = document.getElementById("lightbox-img") as HTMLImageElement;
+  const lightboxClose = document.getElementById("lightbox-close")!;
+
+  function openLightbox(src: string, alt: string) {
+    lightboxImg.src = src;
+    lightboxImg.alt = alt;
+    lightbox.classList.add("open");
+    lightbox.scrollTop = 0;
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove("open");
+    document.body.style.overflow = "";
+  }
+
+  document.querySelectorAll(".slide-image img, .gl-image img, .scroll-image img").forEach((img) => {
+    img.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const el = img as HTMLImageElement;
+      openLightbox(el.src, el.alt);
+    });
+  });
+
+  lightbox.addEventListener("click", (e) => {
+    if (e.target !== lightboxImg) closeLightbox();
+  });
+
+  lightboxClose.addEventListener("click", closeLightbox);
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeLightbox();
   });
 </script>
