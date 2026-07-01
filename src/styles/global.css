@@ -1,18 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Special+Elite&display=swap&family=IM+Fell+English:ital@0;1&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@400;500&display=swap&family=Frijole&display=swap");
-@import url("fonts/ChunkFivePrint/style.css");
 @import "animate.css";
-
-@font-face {
-    font-family: "ChunkFive";
-    src:
-        local("ChunkFive Print"),
-        local("ChunkFive-Print"),
-        url("public/fonts/ChunkFivePrint.woff2") format("woff2"),
-        url("public/fonts/ChunkFivePrint.woff") format("woff"),
-        url("public/fonts/ChunkFivePrint.ttf") format("truetype");
-    font-weight: normal;
-    font-style: normal;
-}
 
 *,
 *::before,
