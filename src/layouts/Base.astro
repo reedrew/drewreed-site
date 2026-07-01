@@ -65,18 +65,22 @@ const { title = "Drew Reed", activePage } = Astro.props;
 
             <main>
                 <slot />
+                <a href="#" class="back-to-top-btn">
+                    <img src="/images/backtotopbtn.png" />
+                    <p>Back to Top</p>
+                </a>
             </main>
-
-            <footer class="footer-note">
-                <div class="footer-rule">
-                    <span class="footer-ornament">&#9672;</span>
-                </div>
-                <div class="footer-text">
-                    Copyright &copy; 2026 Drew Reed &nbsp;&middot;&nbsp; All
-                    rights reserved.&nbsp;
-                </div>
-            </footer>
         </div>
+
+        <footer class="footer-note">
+            <div class="footer-rule">
+                <span class="footer-ornament">&#9672;</span>
+            </div>
+            <div class="footer-text">
+                Copyright &copy; 2026 Drew Reed &nbsp;&middot;&nbsp; All rights
+                reserved.&nbsp;
+            </div>
+        </footer>
     </body>
 </html>
 
@@ -86,3 +90,15 @@ const { title = "Drew Reed", activePage } = Astro.props;
         display: block;
     }
 </style>
+
+<script>
+    const backToTopBtn = document.querySelector(".back-to-top-btn");
+
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 400) {
+            backToTopBtn?.classList.add("show");
+        } else {
+            backToTopBtn?.classList.remove("show");
+        }
+    });
+</script>
