@@ -1,5 +1,5 @@
 # drewreed.me
 
-Personal portfolio site for Drew Reed, graphic and web designer based in Indianapolis.
+My personal portfolio site.
 
-Built with [Astro](https://astro.build). Deployed to GitHub Pages.
+Built with [Astro](https://astro.build) and deployed to [GitHub Pages](https://docs.github.com/en/pages).
