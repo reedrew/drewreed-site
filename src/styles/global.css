@@ -116,7 +116,7 @@ a {
 }
 
 .nav-eyebrow {
-    font-family: var(--font-mono);
+    font-family: var(--font-serif);
     font-size: 1rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;
@@ -343,9 +343,6 @@ a {
     }
     .nav-name {
         font-size: 2.8rem;
-    }
-    .nav-eyebrow {
-        display: none;
     }
     .nav-tagline {
         font-size: 1.1rem;
